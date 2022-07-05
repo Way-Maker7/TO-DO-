@@ -2,9 +2,11 @@ import React, {useState} from "react";
 
 import {createTask} from "./services/apiServices";
 
+interface InputFormProps{
+    onTaskCreation: () => void;
+}
 
-
-export default function InputForm() {
+export default function InputForm(props: InputFormProps) {
 
     const [task, setTask] = useState('');
     const [description, setDescription] = useState('');
@@ -16,7 +18,8 @@ export default function InputForm() {
         })
         .then(() => {
             setTask('');
-            setDescription('')
+            setDescription('');
+            props.onTaskCreation();
         })
     }
 

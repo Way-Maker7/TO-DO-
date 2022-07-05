@@ -10,15 +10,19 @@ export default function App() {
     const [tasks, setTasks] = useState<Array<Task>>([])
 
         useEffect(() => {
-            fetchAllTasks()
-                .then((tasksFromDB:Array<Task>) => setTasks(tasksFromDB))
+            fetchAll();
+
         }, [])
+
+    const fetchAll = () => {
+        fetchAllTasks().then((tasksFromDB:Array<Task>) => setTasks(tasksFromDB))
+    }
 
             return (
             <div>
 
             <Header/>
-            <InputForm/>
+            <InputForm onTaskCreation={fetchAll}/>
             <Gallery tasks={tasks}/>
 
             </div>
