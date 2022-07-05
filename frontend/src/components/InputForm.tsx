@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import {createTask} from "./services/apiServices";
 
 
+
 export default function InputForm() {
 
     const [task, setTask] = useState('');
@@ -10,7 +11,8 @@ export default function InputForm() {
     const create = () => {
         createTask({
             task: task,
-            description: description
+            description: description,
+            status: 'OPEN'
         })
         .then(() => {
             setTask('');
