@@ -1,17 +1,24 @@
 import React from "react";
 import GalleryCard from "./GalleryCard";
+import {Task} from "./services/model";
 
-export default function GalleryColumn() {
-
+interface GalleryColumnProps{
+    headline: string;
+    tasks: Array<Task>
+}
+export default function GalleryColumn(props: GalleryColumnProps) {
 
     return (
         <div className={'GalleryColumn'}>
-            Status 1
-            <GalleryCard/>
-            Status 2
-            <GalleryCard/>
-            Status 3
-            <GalleryCard/>
+           <h3>{props.headline}</h3>
+            <div>
+                <p>Task</p>
+                <p>Beschreibung</p>
+                <button>ok</button>
+                <button>ok</button>
+                <button>ok</button>
+
+            </div>
         </div>
 
 )
