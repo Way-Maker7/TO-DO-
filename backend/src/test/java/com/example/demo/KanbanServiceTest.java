@@ -26,4 +26,15 @@ public class KanbanServiceTest {
         //Then
         Assertions.assertThat(actual).hasSize(2);
     }
+
+    @Test
+    void shouldCreateNewTask(){
+
+        KanbanRepository kanbanRepository = Mockito.mock(KanbanRepository.class);
+        KanbanService kanbanService = new KanbanService(kanbanRepository);
+        Task newTask = new Task("NEU", "Beschreibung", TaskStatus.OPEN);
+        kanbanService.createTask(newTask);
+
+        Mockito.verify(kanbanRepository).save(newTask);
+    }
 }

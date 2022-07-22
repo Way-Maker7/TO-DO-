@@ -13,6 +13,10 @@ public class KanbanService {
 
     public List<Task> findAll() {
 
-        return null;
+        return kanbanRepository.findAll();
+    }
+
+    public void createTask(Task task) {
+        kanbanRepository.save(task);
     }
 }
