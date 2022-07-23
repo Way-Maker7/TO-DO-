@@ -37,4 +37,16 @@ public class KanbanServiceTest {
 
         Mockito.verify(kanbanRepository).save(newTask);
     }
+
+    @Test
+    void shouldDeleteTask(){
+
+        KanbanRepository kanbanRepository = Mockito.mock(KanbanRepository.class);
+        KanbanService kanbanService = new KanbanService(kanbanRepository);
+
+        kanbanService.deleteTask("4711");
+
+        Mockito.verify(kanbanRepository).deleteById("4711");
+
+    }
 }

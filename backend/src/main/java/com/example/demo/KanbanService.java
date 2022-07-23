@@ -19,4 +19,8 @@ public class KanbanService {
     public void createTask(Task task) {
         kanbanRepository.save(task);
     }
+
+    public void deleteTask(String taskId) {
+         kanbanRepository.deleteById(taskId);
+    }
 }

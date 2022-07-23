@@ -14,4 +14,21 @@ public class KanbanRepositoryTest {
 
         Assertions.assertThat(kanbanRepository.findAll()).hasSize(1);
     }
+
+    @Test
+    void shouldDelete(){
+        //Given
+        var kanbanRepository = new KanbanRepository();
+        Task task = new Task("Task1", "Desc1", TaskStatus.OPEN);
+        kanbanRepository.save(task);
+
+        //When
+        kanbanRepository.deleteById(task.getId());
+
+        //Then
+        Assertions.assertThat(kanbanRepository.findAll().isEmpty());
+
+
+    }
+
 }
