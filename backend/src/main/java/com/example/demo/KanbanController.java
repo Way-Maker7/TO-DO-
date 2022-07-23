@@ -1,19 +1,27 @@
 package com.example.demo;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/Kanban")
+@RequiredArgsConstructor
 public class KanbanController {
 
+    private final KanbanService kanbanService;
     @GetMapping
     public List<Task> getTasks(){
-        return null;
+        return kanbanService.findAll();
+
+    }
+
+    @PostMapping
+    public void createTask(@RequestBody Task task){
+
+        kanbanService.createTask(task);
 
     }
 
