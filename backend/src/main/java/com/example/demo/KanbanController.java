@@ -30,4 +30,9 @@ public class KanbanController {
        kanbanService.deleteTask(taskId);
     };
 
+    @PutMapping("/next")
+    public void pushForward(@RequestBody Task task){
+
+    }
+
 }

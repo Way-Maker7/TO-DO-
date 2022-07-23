@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.util.List;
+import java.util.Optional;
 
 public class KanbanServiceTest {
 
@@ -47,6 +48,22 @@ public class KanbanServiceTest {
         kanbanService.deleteTask("4711");
 
         Mockito.verify(kanbanRepository).deleteById("4711");
+
+    }
+
+    @Test
+    void shouldpromoteTask(){
+        Task taskToEdit = new Task("Wäsche waschen", "nein danke", TaskStatus.OPEN);
+        Task taskToSave = new Task("Wäsche waschen", "nein danke", TaskStatus.OPEN);
+
+        KanbanRepository kanbanRepository = Mockito.mock(KanbanRepository.class);
+        Mockito.when(kanbanRepository.findById(taskToEdit.getId())).thenReturn(Optional.of(taskToEdit));
+
+        KanbanService kanbanService = new KanbanService(kanbanRepository);
+        kanbanService.promoteTask(taskToEdit);
+
+        Mockito.verify(kanbanRepository).save(taskToSave);
+
 
     }
 }

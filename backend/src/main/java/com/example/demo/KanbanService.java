@@ -23,4 +23,13 @@ public class KanbanService {
     public void deleteTask(String taskId) {
          kanbanRepository.deleteById(taskId);
     }
+
+    public void promoteTask(Task taskToEdit) {
+       kanbanRepository.findById(taskToEdit.getId())
+               .map(taskFromDB -> {
+                   taskFromDB.setStatus(taskFromDB.getStatus().next());
+                   return taskFromDB;
+               })
+               .ifPresent(kanbanRepository::save);
+    }
 }

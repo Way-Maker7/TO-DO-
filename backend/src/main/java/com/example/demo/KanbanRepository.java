@@ -31,4 +31,9 @@ public class KanbanRepository {
             tasks.remove(found.get());
         }
     }
+
+    public Optional<Task> findById(String id) {
+
+        return Optional.empty();
+    }
 }

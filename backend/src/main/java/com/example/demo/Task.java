@@ -6,15 +6,23 @@ import lombok.Data;
 import java.util.UUID;
 
 @Data
-@AllArgsConstructor
+
 public class Task {
 
    private final String id = UUID.randomUUID().toString();
    private String task;
    private String description;
+
+   public Task(String task, String description, TaskStatus status) {
+      this.task = task;
+      this.description = description;
+      this.status = status;
+   }
+
    private TaskStatus status;
-  //private String status;
 
-
+   public void setStatus(TaskStatus status){
+      this.status = status;
+   }
 
 }
