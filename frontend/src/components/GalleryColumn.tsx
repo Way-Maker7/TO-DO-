@@ -4,19 +4,16 @@ import {Task} from "./services/model";
 
 interface GalleryColumnProps{
     headline: string;
-    tasks: Array<Task>
+    tasks: Array<Task>;
+    onTaskManipulation: () => void;
 }
+
 export default function GalleryColumn(props: GalleryColumnProps) {
 
     const taskComponents = props.tasks.map(task =>
-        (<div>
-            <p>{task.task}</p>
-            <p>{task.description}</p>
-            <button>ok</button>
-            <button>ok</button>
-            <button>ok</button>
-
-        </div>)
+        <div key={task.id}>
+            <GalleryCard task={task} onTaskManipulation={props.onTaskManipulation}/>
+        </div>
     )
 
 

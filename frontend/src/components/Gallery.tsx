@@ -3,7 +3,8 @@ import GalleryColumn from "./GalleryColumn";
 import {Task} from "./services/model";
 
 interface GalleryProps {
-    tasks: Array<Task>
+    tasks: Array<Task>;
+    onTaskManipulation: () => void;
 }
 
 export default function Gallery(props: GalleryProps) {
@@ -16,9 +17,9 @@ export default function Gallery(props: GalleryProps) {
         <div className={'gallery'}>
 
 
-            <GalleryColumn headline="Open" tasks={openTasks}/>
-            <GalleryColumn headline="In progress" tasks={tasksInProgress}/>
-            <GalleryColumn headline="Done" tasks={doneTasks}/>
+            <GalleryColumn headline="Open" tasks={openTasks} onTaskManipulation={props.onTaskManipulation}/>
+            <GalleryColumn headline="In progress" tasks={tasksInProgress} onTaskManipulation={props.onTaskManipulation}/>
+            <GalleryColumn headline="Done" tasks={doneTasks} onTaskManipulation={props.onTaskManipulation}/>
 
 
         </div>

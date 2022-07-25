@@ -23,7 +23,7 @@ export default function App() {
 
             <Header/>
             <InputForm onTaskCreation={fetchAll}/>
-            <Gallery tasks={tasks}/>
+            <Gallery tasks={tasks} onTaskManipulation={fetchAll}/>
 
             </div>
             );
