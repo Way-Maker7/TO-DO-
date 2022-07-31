@@ -35,7 +35,7 @@ public class KanbanController {
     @DeleteMapping("/{tasId}")
     public void deleteTask(@PathVariable String taskId){
        kanbanService.deleteTask(taskId);
-    };
+    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -57,4 +57,5 @@ public class KanbanController {
     public void pullBackward(@RequestBody Task task){
         kanbanService.demoteTask(task);
     }
+
 }
